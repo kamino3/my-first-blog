@@ -1,78 +1,83 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
- <head>
-  <title>
-   Qiita風記事一覧
-  </title>
-  <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
- </head>
- <body>
-  <div id="app">
-   <div class="header">
-    <h1>
-     Qiita風記事一覧
-    </h1>
-    <form action="#" class="search-form" method="get" style="position:absolute; right:20px; top:20px;">
-     <input name="search" placeholder="Search articles..." type="text"/>
-    </form>
-   </div>
-   <ul>
-    <li :class="{ active: currentTab === 1 }" @click="changeTab(1)">
-     Tab1
-    </li>
-    <li :class="{ active: currentTab === 2 }" @click="changeTab(2)">
-     Tab2
-    </li>
-    <li :class="{ active: currentTab === 3 }" @click="changeTab(3)">
-     Tab3
-    </li>
-    <li :class="{ active: currentTab === 4 }" @click="changeTab(4)">
-     Tab4
-    </li>
-   </ul>
-   <div v-if="currentTab === 1">
-    <!-- Tab1の一覧を表示する部分 -->
-   </div>
-   <div v-if="currentTab === 2">
-    <!-- Tab2の一覧を表示する部分 -->
-   </div>
-   <div v-if="currentTab === 3">
-    <!-- Tab3の一覧を表示する部分 -->
-   </div>
-   <div v-if="currentTab === 4">
-    <!-- Tab4の一覧を表示する部分 -->
-   </div>
-   <div class="article-list">
-    <div :key="article.id" class="article-card" v-for="article in articles">
-     <div class="article-info">
-      <div class="user-info">
-       <img :src="article.user.avatar_url" alt="avatar"/>
-       <p>
-        {{ article.user.name }}
-       </p>
+  <head>
+    <title>Qiita風記事一覧</title>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="header">
+        <div class="header-container">
+          <h1>Qiita風記事一覧</h1>
+          <form
+            action="#"
+            class="search-form"
+            method="get"
+            style="position: absolute; right: 40px; top: 30px"
+          >
+            <input name="search" placeholder="Search articles..." type="text" />
+          </form>
+          <ul>
+            <li
+              v-bind:class="{ active: currentTab === 1 }"
+              v-on:click="changeTab(1)"
+            >
+              Tab1
+            </li>
+            <li
+              v-bind:class="{ active: currentTab === 2 }"
+              v-on:click="changeTab(2)"
+            >
+              Tab2
+            </li>
+            <li
+              v-bind:class="{ active: currentTab === 3 }"
+              v-on:click="changeTab(3)"
+            >
+              Tab3
+            </li>
+            <li
+              v-bind:class="{ active: currentTab === 4 }"
+              v-on:click="changeTab(4)"
+            >
+              Tab4
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="article-details">
-       <h2>
-        {{ article.title }}
-       </h2>
-       <p class="article-date">
-        {% verbatim %}{{ formatDate(article.created_at) }}{% endverbatim %}
-       </p>
-       <p class="article-description">
-        {{ article.body }}
-       </p>
+      <div v-if="currentTab === 1">
+        <!-- Tab1の一覧を表示する部分 -->
       </div>
-     </div>
-     <a :href="article.url" class="read-more-btn">
-      記事を読む
-     </a>
+      <div v-if="currentTab === 2">
+        <!-- Tab2の一覧を表示する部分 -->
+      </div>
+      <div v-if="currentTab === 3">
+        <!-- Tab3の一覧を表示する部分 -->
+      </div>
+      <div v-if="currentTab === 4">
+        <!-- Tab4の一覧を表示する部分 -->
+      </div>
+      <div class="article-list">
+        <div :key="article.id" class="article-card" v-for="article in articles">
+          <div class="article-info">
+            <div class="user-info">
+              <img :src="article.user.avatar_url" alt="avatar" />
+              <p>{{ article.user.name }}</p>
+            </div>
+            <div class="article-details">
+              <h2>{{ article.title }}</h2>
+              <p class="article-date">
+                {% verbatim %}{{ formatDate(article.created_at) }}{% endverbatim %}
+              </p>
+              <p class="article-description">{{ article.body }}</p>
+            </div>
+          </div>
+          <a :href="article.url" class="read-more-btn"> 記事を読む </a>
+        </div>
+      </div>
     </div>
-   </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js">
-  </script>
-  <script src="{% static 'app.js' %}">
-  </script>
- </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="{% static 'app.js' %}"></script>
+  </body>
 </html>
