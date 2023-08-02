@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background-color: #ffffff;
 }
 
 .header {
@@ -92,7 +92,7 @@ ul li.active {
 
 .user-info p {
   font-size: 16px;
-  color: #555555;
+  color: #333333;
 }
 
 .article-details h2 {
@@ -108,7 +108,7 @@ ul li.active {
 
 .article-description {
   font-size: 16px;
-  color: #555555;
+  color: #333333;
   margin-bottom: 10px;
 }
 
@@ -133,3 +133,28 @@ ul li.active {
   /* 他のスタイル */
 }
 
+
+h1, h2, h3, .card-header h3 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: .25rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #fff;
+}
+
+.card-header h3 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: .5em;
+}
+
+.card-body .card-body p {
+    color: #333;
+    margin-bottom: 1em;
+}
