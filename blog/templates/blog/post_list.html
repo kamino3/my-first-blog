@@ -1,64 +1,22 @@
-{% load crispy_forms_tags %} {% load static %}
+{% extends "blog/base.html" %} {% block content %} {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Qiita風記事一覧</title>
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-  </head>
   <body>
-    <div id="app">
-      <div class="header">
-        <div class="header-container">
-          <h1>Qiita風記事一覧</h1>
-          <form
-            action="#"
-            class="search-form"
-            method="get"
-            style="position: absolute; right: 40px; top: 30px"
-          >
-            <input name="search" placeholder="Search articles..." type="text" />
-          </form>
-          <ul>
-            <li>Tab1</li>
-            <li>Tab2</li>
-            <li>Tab3</li>
-            <li>Tab4</li>
-          </ul>
-        </div>
-      </div>
-      <div v-if="currentTab === 1">
-        <!-- Tab1の一覧を表示する部分 -->
-      </div>
-      <div v-if="currentTab === 2">
-        <!-- Tab2の一覧を表示する部分 -->
-      </div>
-      <div v-if="currentTab === 3">
-        <!-- Tab3の一覧を表示する部分 -->
-      </div>
-      <div v-if="currentTab === 4">
-        <!-- Tab4の一覧を表示する部分 -->
-      </div>
-    </div>
-    <script src="{% static 'app.js' %}"></script>
-    <h2>New article</h2>
-    <form method="POST" class="post-form form-inline my-2 my-lg-0">
-      {% csrf_token %}
-      <div class="form-group">{{ form.title|as_crispy_field }}</div>
-      <div class="form-group">{{ form.text|as_crispy_field }}</div>
-      <button type="submit" class="btn btn-primary mt-2">Submit</button>
-      <button type="submit" class="save btn btn-default">Save</button>
-    </form>
     <h2>Articles</h2>
-    {% for article in articles %}
-    <div class="card mt-4">
-      
-        <div class="card-header"><h3>{{ article.title }}</h3></div>
-        
-          <p>{{ article.text }}</p></div>
-        </div>
-
+    <div class="article-list">
+      <div>
+        {% for post in posts %}
+        <a href="{% url 'post_detail' pk=post.pk %}">
+          <div class="card mt-4">
+            <div class="card-header">
+              <h3>{{ post.title }}</h3>
+            </div>
+            <p>{{ post.text }}</p>
+          </div>
+        </a>
         {% endfor %}
       </div>
     </div>
   </body>
 </html>
+{% endblock content %}

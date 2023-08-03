@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %} {% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New Post</title>
+  </head>
+  <body>
+    <h2>New Post</h2>
+    <form method="POST" action="">
+      {% csrf_token %}
+      <div class="form-group">{{ form.title }}</div>
+      <div class="form-group">{{ form.text }}</div>
+      <button type="submit" class="btn btn-primary mt-2">Submit</button>
+    </form>
+  </body>
+</html>
+{% endblock content %}
