@@ -1,4 +1,4 @@
-
+{% extends "blog/base.html" %} {% block content %} {% load static %}
 <!DOCTYPE html>
 <html>
   <body>
@@ -7,7 +7,7 @@
     <div class="article-list">
       <div>
         {% for post in posts %}
-        <a href="{% url 'post_detail' pk=post.pk %}">
+        <a href="{% url 'post-detail' pk=post.pk %}">
           <div class="card mt-4">
             <div class="card-header">
               <h3>{{ post.title }}</h3>
