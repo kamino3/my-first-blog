@@ -1,13 +1,13 @@
 from django.urls import path
-from django.contrib import admin
 from . import views
+from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.post_list, name='post_list'),
-]
-from . import views
-
-urlpatterns += [
-    path('new/', views.new_article, name='new_article'),
+    path('', PostListView.as_view(), name='blog-home'),
+    path('post/<int:pk>/', PostDetailView.as_view(), name='post_detail'),
+    path('post/new/', PostCreateView.as_view(), name='post_create'),
+    path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post_update'),
+    path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post_delete'),
+    
 ]

@@ -1,13 +1,41 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>My Blog</title>
-</head>
-<body>
-    <header>
-        <h1>Welcome to My Blog!</h1>
-    </header>
-    {% block content %}
-    {% endblock %}
-</body>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="header">
+        <div class="header-container">
+          <h1><a href="{% url 'blog-home' %}">Qiita風記事一覧</a></h1>
+          <form
+          action="#"
+          class="search-form"
+          method="get"
+          style="position: absolute; right: 80px; top:30px"
+      >
+          <input name="search" placeholder="Search posts..." type="text" />
+      </form>
+          <ul>
+            <li>Tab1</li>
+            <li>Tab2</li>
+            <li>Tab3</li>
+            <li>Tab4</li>
+            <li><a href="/post/new/">New Post</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}{% endblock content %}
+
+    <footer>
+      <!-- Insert footer items here -->
+    </footer>
+
+    <script src=""></script>
+  </body>
 </html>
