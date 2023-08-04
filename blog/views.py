@@ -47,3 +47,15 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author:
             return True
         return False
+
+
+
+from django.views import View
+from django.shortcuts import render
+from .models import Post
+
+class SearchResultsView(View):
+    def post(self, request):
+        query = request.POST.get('query')
+        results = Post.objects.filter(title__icontains=query)
+        return render(request, 'blog/search_results.html', {'results': results})
