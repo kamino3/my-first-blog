@@ -1,3 +1,5 @@
 Django~=3.2.10
 django-allauth
 django-crispy-forms
+django-crispy-forms==1.9.2
+theirs
