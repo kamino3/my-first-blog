@@ -1,4 +1,8 @@
 {% extends "blog/base.html" %} {% block content %}
+
+{% if not user.is_authenticated %}
+    {% include "registration/login.html" with form=login_form %}
+{% endif %}
 <!DOCTYPE html>
 <html>
   <head>

@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
+    'allauth',
+    'allauth.socialaccount',
+    'allauth.account',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +140,9 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'naaaaki@gmail.com' # あなたのGmailアドレス
 EMAIL_HOST_PASSWORD = 'furghwsxdxpclxbb' # あなたのGmailのパスワード２段階認証をしていたらアプリパスワードを設定
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+AUTHENTICATION_BACKENDS = ('allauth.account.auth_backends.AuthenticationBackend',)
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True

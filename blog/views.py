@@ -59,3 +59,6 @@ class SearchResultsView(View):
         query = request.POST.get('query')
         results = Post.objects.filter(title__icontains=query)
         return render(request, 'blog/search_results.html', {'results': results})
+
+def profile_view(request):
+    return render(request, 'blog/profile.html', {})

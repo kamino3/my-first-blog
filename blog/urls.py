@@ -5,6 +5,7 @@ from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView,
 
 
 urlpatterns = [
+path('accounts/profile/', views.profile_view, name='profile_view'),
     path('search/', SearchResultsView.as_view(), name='search_results'),
     path('', PostListView.as_view(), name='blog-home'),
     path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
