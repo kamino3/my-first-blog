@@ -4,6 +4,8 @@
   <head>
     <title>My Blog</title>
     <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'trix/dist/trix.css' %}">
+    <script type="text/javascript" src="{% static 'trix/dist/trix.js' %}"></script>
   </head>
 
   <body>
@@ -25,8 +27,8 @@
             <li>Tab2</li>
             <li>Tab3</li>
             <li>Tab4</li>
-            <li><a href="/post/new/">New Post</a></li>
-            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/post/new/">新しい投稿</a></li>
+            <li><a href="/contact/">連絡先</a></li>
           </ul>
 <a href="{% url 'account_signup' %}">ユーザー登録</a>
         </div>
@@ -41,4 +43,3 @@
 
     <script src=""></script>
   </body>
-</html><a href="{% url 'account_signup' %}" class="top-menu">ユーザー登録</a>

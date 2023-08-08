@@ -2,3 +2,4 @@ Django~=3.2.10
 django-allauth==0.53.1
 django-crispy-forms==1.9.2
 ##theirs
+django-trix==0.0.12

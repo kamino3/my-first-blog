@@ -14,3 +14,7 @@ path('accounts/profile/', views.profile_view, name='profile_view'),
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post_delete'),
     
 ]
+
+from django.contrib.auth.views import LogoutView
+
+urlpatterns.append(path('accounts/logout/', LogoutView.as_view(), name='logout'))
