@@ -28,3 +28,37 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+class ExamQuestion(models.Model):
+    question = models.TextField()
+    answer_1 = models.CharField(max_length=255)
+    answer_2 = models.CharField(max_length=255)
+    answer_3 = models.CharField(max_length=255)
+    answer_4 = models.CharField(max_length=255)
+    correct_answer = models.PositiveSmallIntegerField(choices=[(1, 'Answer 1'), (2, 'Answer 2'), (3, 'Answer 3'), (4, 'Answer 4')])
+
+    def __str__(self):
+        return self.question
+
+from django.contrib.auth.models import User
+
+class Profile(models.Model):
+    display_name = models.CharField(max_length=255, blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    has_passed_exam = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user.username
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.contrib.auth.models import User
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()

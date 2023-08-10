@@ -29,11 +29,23 @@
             <li>Tab4</li>
             <li><a href="/post/new/">新しい投稿</a></li>
             <li><a href="/contact/">連絡先</a></li>
+<li><a href="/account_info/">アカウント情報</a></li>
+<li class="mt-3 mb-3"><a href="{% url 'exam' %}" class="btn btn-primary">試験を受ける</a></li>
           </ul>
+
+{% if user.is_authenticated %}
+    <li><a href="{% url 'account_logout' %}">ログアウト</a></li>
+{% else %}
+    <li><a href="{% url 'account_login' %}">ログイン</a></li>
+{% endif %}
 <a href="{% url 'account_signup' %}">ユーザー登録</a>
         </div>
       </div>
     </nav>
+
+
+
+
 
     {% block content %}{% endblock content %}
 

@@ -3,8 +3,12 @@ from django.views.generic import ListView, DetailView
 from .models import Post
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from .models import ExamQuestion
+from .models import Profile
+
 
 class PostListView(ListView):
     model = Post
@@ -16,14 +20,27 @@ class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/post_detail.html'  # <app>/<model>_<viewtype>.html
 
-class PostCreateView(LoginRequiredMixin, CreateView):
+class PostCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Post
     fields = ['title', 'text']
+    
+    def test_func(self):
+        if not self.request.user.is_authenticated:
+            return False
+        try:
+            profile = Profile.objects.get(user=self.request.user)
+        except Profile.DoesNotExist:
+            profile = Profile.objects.create(user=self.request.user)
+        return profile.has_passed_exam
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+        profile = Profile.objects.get(user=self.request.user)
+        return profile.has_passed_exam
 
+    def handle_no_permission(self):
+        if not self.request.user.is_authenticated:
+            return redirect('account_login')
+        return render(self.request, 'blog/custom_403.html', status=403)
+        return render(self.request, 'blog/custom_403.html', status=403)
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title', 'text']
@@ -62,3 +79,28 @@ class SearchResultsView(View):
 
 def profile_view(request):
     return render(request, 'blog/profile.html', {})
+
+@login_required(login_url='login-redirect')
+def exam(request):
+    questions = ExamQuestion.objects.order_by('?')[:10]
+    
+    if request.method == "POST":
+        user_answers = {int(k): int(v) for k, v in request.POST.items() if k != "csrfmiddlewaretoken"}
+        score = sum(1 for q_id, answer in user_answers.items() if ExamQuestion.objects.get(id=q_id).correct_answer == answer)
+        if score >= 5:
+            profile, created = Profile.objects.get_or_create(user=request.user)
+            profile.has_passed_exam = True
+            profile.save()
+        return render(request, 'blog/exam_result.html', {'score': score, 'total_questions': 10})
+
+    return render(request, 'blog/exam.html', {'questions': questions})
+
+
+def account_info(request):
+
+    if request.method == 'POST':
+        display_name = request.POST.get('display_name')
+        profile, created = Profile.objects.get_or_create(user=request.user)
+        profile.display_name = display_name
+        profile.save()
+    return render(request, 'blog/account_info.html')

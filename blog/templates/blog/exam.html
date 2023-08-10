@@ -1,0 +1,25 @@
+
+{% extends "blog/base.html" %}
+{% block content %}
+    <form method="post">
+    {% csrf_token %}
+    {% for question in questions %}
+        <div class="exam-question">
+            <h4>{{ question.question }}</h4>
+            <label>
+                <input type="radio" name="{{ question.id }}" value="1" required> {{ question.answer_1 }}
+            </label><br>
+            <label>
+                <input type="radio" name="{{ question.id }}" value="2" required> {{ question.answer_2 }}
+            </label><br>
+            <label>
+                <input type="radio" name="{{ question.id }}" value="3" required> {{ question.answer_3 }}
+            </label><br>
+            <label>
+                <input type="radio" name="{{ question.id }}" value="4" required> {{ question.answer_4 }}
+            </label><br>
+        </div>
+    {% endfor %}
+    <input type="submit" value="Submit Answers">
+    </form>
+{% endblock %}

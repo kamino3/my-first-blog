@@ -1,0 +1,122 @@
+[
+    {
+        "model": "blog.examquestion",
+        "pk": 1,
+        "fields": {
+            "question": "LOLで5人のチーム同士が戦うモードは何ですか？",
+            "answer_1": "サモナーズリフト",
+            "answer_2": "ARAM",
+            "answer_3": "タワーダイブ",
+            "answer_4": "ドラゴンスレイヤー",
+            "correct_answer": 1
+        }
+    },
+    {
+        "model": "blog.examquestion",
+        "pk": 2,
+        "fields": {
+            "question": "LOLでキル数よりも重要な要素は何ですか？",
+            "answer_1": "ゴールド",
+            "answer_2": "アビリティの数",
+            "answer_3": "スキンの種類",
+            "answer_4": "ランク",
+            "correct_answer": 1
+        }
+    },
+    {
+        "model": "blog.examquestion",
+        "pk": 3,
+        "fields": {
+            "question": "LOLで最も基本的な目標は何ですか？",
+            "answer_1": "バロンナッシュ",
+            "answer_2": "インヒビター",
+            "answer_3": "ドラゴン",
+            "answer_4": "ネクサス",
+            "correct_answer": 4
+        }
+    },
+    {
+        "model": "blog.examquestion",
+        "pk": 4,
+        "fields": {
+            "question": "LOLで味方の塔を守る役割は何と呼ばれますか？",
+            "answer_1": "キャリーオン",
+            "answer_2": "ティーパーティ",
+            "answer_3": "ディフェンダー",
+            "answer_4": "スプリッター",
+            "correct_answer": 3
+        }
+    },
+    {
+        "model": "blog.examquestion",
+        "pk": 5,
+        "fields": {
+            "question": "LOLでチャンピオンの強化アイテムを示す用語は何ですか？",
+            "answer_1": "ウルフ",
+            "answer_2": "アークエンジェル",
+            "answer_3": "デッドマンズプレート",
+            "answer_4": "バフ",
+            "correct_answer": 4
+        }
+    },
+    {
+        "model": "blog.examquestion",
+        "pk": 6,
+        "fields": {
+            "question": "LOLのマップに存在する大きなモンスターで、強力なバフを提供するのは何ですか？",
+            "answer_1": "バロンナッシュ",
+            "answer_2": "ヘラルド",
+            "answer_3": "エレメンタルドラゴン",
+            "answer_4": "キャノンミニオン",
+            "correct_answer": 1
+        }
+    },
+    {
+        "model": "blog.examquestion",
+        "pk": 7,
+        "fields": {
+            "question": "LOLの試合で一番最初にスポーンするモンスターは何ですか？",
+            "answer_1": "バロンナッシュ",
+            "answer_2": "エレメンタルドラゴン",
+            "answer_3": "ブルーバフ",
+            "answer_4": "レッドバフ",
+            "correct_answer": 3
+        }
+    },
+    {
+        "model": "blog.examquestion",
+        "pk": 8,
+        "fields": {
+            "question": "LOLの試合で敵チームのネクサスを破壊する行為を何と呼びますか？",
+            "answer_1": "スノーボール",
+            "answer_2": "ベースレース",
+            "answer_3": "ベースドロップ",
+            "answer_4": "ネクサスダイブ",
+            "correct_answer": 2
+        }
+    },
+    {
+        "model": "blog.examquestion",
+        "pk": 9,
+        "fields": {
+            "question": "LOLの試合で使える通貨の単位は何ですか？",
+            "answer_1": "ゴールド",
+            "answer_2": "ダイヤモンド",
+            "answer_3": "メタル",
+            "answer_4": "クリスタル",
+            "correct_answer": 1
+        }
+    },
+    {
+        "model": "blog.examquestion",
+        "pk": 10,
+        "fields": {
+            "question": "LOLの試合で最初にスポーンするモンスターは何ですか？",
+            "answer_1": "エレメンタルドラゴン",
+            "answer_2": "バロンナッシュ",
+            "answer_3": "ヘラルド",
+            "answer_4": "キャノンミニオン",
+            "correct_answer": 1
+        }
+    }
+]

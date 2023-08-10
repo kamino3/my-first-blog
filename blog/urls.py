@@ -13,6 +13,10 @@ path('accounts/profile/', views.profile_view, name='profile_view'),
     path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post_update'),
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post_delete'),
     
+
+    path('exam/', views.exam, name='exam'),
+
+    path('account_info/', views.account_info, name='account_info'),
 ]
 
 from django.contrib.auth.views import LogoutView
