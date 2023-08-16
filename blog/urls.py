@@ -1,3 +1,8 @@
+
+# urls.py: このファイルではアプリケーションのURLパターンが定義されています。
+# 各URLパターンは、リクエストを処理するビューと関連付けられています。
+# URLパターンは動的な部分（例：<int:pk>）を含むことができ、URLから値をキャプチャします。
+
 from .views import SearchResultsView
 from django.urls import path
 from . import views

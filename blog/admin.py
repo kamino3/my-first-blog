@@ -1,3 +1,6 @@
+
+# admin.py: このファイルでDjangoの管理サイトの設定が行われます。
+# モデルを管理サイトに追加することで、データベースのレコードをGUIから編集できるようになります。
 from .models import Profile
 from django.contrib import admin
 from .models import Post

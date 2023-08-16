@@ -1,3 +1,9 @@
+
+# views.py: このファイルにはユーザーのリクエストを処理し、レスポンスを返すロジックが含まれています。
+# Djangoでは、ビューは関数ベースまたはクラスベースのいずれかで作成できます。
+# 関数ベースのビューはリクエストオブジェクトを取得し、HttpResponseオブジェクトを返します。
+# クラスベースのビューは、異なるHTTPメソッド（GET, POSTなど）を処理するためのより整理された方法を提供します。
+
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from .models import Post
@@ -22,8 +28,8 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Post
-    fields = ['title', 'text']
-    
+    fields = ['title', 'text', 'tags']
+
     def test_func(self):
         if not self.request.user.is_authenticated:
             return False
@@ -41,11 +47,16 @@ class PostCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
             return redirect('account_login')
         return render(self.request, 'blog/custom_403.html', status=403)
         return render(self.request, 'blog/custom_403.html', status=403)
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'text']
-
+    fields = ['title', 'text', 'tags']
     def form_valid(self, form):
+        
         form.instance.author = self.request.user
         return super().form_valid(form)
 

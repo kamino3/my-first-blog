@@ -1,4 +1,3 @@
-
 {% extends "blog/base.html" %}
 {% load static %}
 
@@ -9,12 +8,17 @@
 
 <h2>新しい投稿</h2>
 <form method="POST" action="">
-  {% csrf_token %}
-  <div class="form-group">タイトル: {{ form.title }}</div>
-  <div class="form-group">
-    本文: {{ form.text }}
-    <trix-editor input="{{ form.text.id_for_label }}"></trix-editor>
-  </div>
-  <button type="submit" class="btn btn-primary mt-2">送信</button>
+    {% csrf_token %}
+    <div class="form-group">タイトル: {{ form.title }}</div>
+    <div class="form-group">
+      本文: {{ form.text }}<br>
+      <trix-editor input="{{ form.text.id_for_label }}"></trix-editor>
+    </div>
+    
+    <div class="form-group">
+      <label for="{{ form.tags.id_for_label }}">タグ（カンマ区切りで入力してください）:</label>
+      {{ form.tags }}
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">送信</button>
 </form>
 {% endblock content %}
